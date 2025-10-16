@@ -1,3 +1,4 @@
+#https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html
 Parameters:
   Version:
     Type: String
@@ -40,6 +41,13 @@ Resources:
       Manifest:
         governedRegions:
           Ref: GovernedRegions
+        organizationStructure:
+          security:
+            name:
+              Ref: SecurityOuName
+          sandbox:
+            name:
+              Ref: SandboxOuName
         centralizedLogging:
           accountId:
             Ref: CentralizedLoggingAccountId
@@ -53,5 +61,8 @@ Resources:
             kmsKeyArn:
               Ref: KMSKey    
           enabled: true
+        securityRoles:
+          accountId:
+            Ref: SecurityAccountId
         accessManagement:
           enabled: true
